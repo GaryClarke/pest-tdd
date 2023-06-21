@@ -1,0 +1,10 @@
+{
+    "require-dev": {
+        "pestphp/pest": "^2.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
