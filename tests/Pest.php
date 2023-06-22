@@ -11,7 +11,7 @@
 |
 */
 
-// uses(Tests\ApiTestCase::class)->in('Feature');
+ uses(Tests\ApiTestCase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
