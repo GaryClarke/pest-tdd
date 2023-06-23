@@ -11,19 +11,10 @@ abstract class ApiTestCase extends BaseTestCase
         string $uri = '/',
         array $data = [],
         array $headers = []
-    ): object
+    ): Response
     {
-        return new class {
+        $body = '{"id":1,"title":"Clean Code: A Handbook of Agile Software Craftsmanship","year_published":2008,"author":{"id":1,"name":"Robert C. Martin","bio":"This is an author"}}';
 
-            public function getStatus(): int
-            {
-                return 200;
-            }
-
-            public function getBody(): string
-            {
-                return '{"id":1,"title":"Clean Code: A Handbook of Agile Software Craftsmanship","year_published":2008,"author":{"id":1,"name":"Robert C. Martin","bio":"This is an author"}}';
-            }
-        };
+        return new Response(body: $body, statusCode: 200, headers: []);
     }
 }
