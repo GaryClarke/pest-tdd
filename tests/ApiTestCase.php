@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Http\Response;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
 abstract class ApiTestCase extends BaseTestCase
