@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Http\Request;
 use App\Http\Response;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
@@ -15,10 +16,21 @@ abstract class ApiTestCase extends BaseTestCase
     ): Response
     {
         // Json encode the data
+        $content = json_encode($data);
 
         // Merge server variables with $headers
+        $server = array_merge([
+            'CONTENT_TYPE' => 'application/json',
+            'Accept' => 'application/json',
+        ], $headers);
 
         // Create a $request using a static named constructor
+        $request = Request::create(
+            method: $method,
+            uri: $uri,
+            server: $server,
+            content: $content
+        );
 
         // Create / resolve the Kernel
 
