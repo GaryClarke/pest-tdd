@@ -5,6 +5,7 @@ namespace Tests;
 use App\Http\Kernel;
 use App\Http\Request;
 use App\Http\Response;
+use App\Routing\Router;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
 abstract class ApiTestCase extends BaseTestCase
@@ -34,7 +35,7 @@ abstract class ApiTestCase extends BaseTestCase
         );
 
         // Create / resolve the Kernel
-        $kernel = new Kernel();
+        $kernel = new Kernel(new Router());
 
         // Obtain a $response object: $response = $kernel->handle($request)
         $response = $kernel->handle($request);
