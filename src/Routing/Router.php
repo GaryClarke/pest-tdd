@@ -10,12 +10,19 @@ use function FastRoute\simpleDispatcher;
 
 class Router
 {
+    private iterable $routes;
+
+    public function setRoutes(iterable $routes): void
+    {
+        $this->routes = $routes;
+    }
+
     public function dispatch(Request $request): Response
     {
         $dispatcher = simpleDispatcher(function (RouteCollector $r) {
-            $r->addRoute('GET', '/foo', function () {
-                return new Response();
-            });
+            foreach ($this->routes as $route) {
+                $r->addRoute(...$route);
+            }
         });
 
         // Fetch method and URI from somewhere
