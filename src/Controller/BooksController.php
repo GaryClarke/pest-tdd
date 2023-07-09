@@ -10,6 +10,6 @@ class BooksController
 {
     public function show(int $id): Response
     {
-
+        dd($id);
     }
 }
