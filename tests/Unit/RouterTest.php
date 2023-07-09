@@ -4,10 +4,14 @@ it('returns a 200 Response object if a valid route exists', function() {
 
     // ARRANGE
     $request = \App\Http\Request::create('GET', '/foo');
-    $router = new \App\Routing\Router();
+    $handler = fn() => new \App\Http\Response();
+    $routeHandlerResolver = Mockery::mock(\App\Routing\RouteHandlerResolver::class);
+    $routeHandlerResolver->shouldReceive('resolve')
+        ->andReturn($handler);
+    $router = new \App\Routing\Router($routeHandlerResolver);
 
     $router->setRoutes([
-        ['GET', '/foo', fn() => new \App\Http\Response()]
+        ['GET', '/foo', $handler]
     ]);
 
     // ACT
