@@ -4,7 +4,7 @@ $routes = [
     [
         'GET',
         '/books/{id:\d+}',
-        fn() => new \App\Http\Response()
+        [\App\Controller\BooksController::class, 'show']
     ]
 ];
 

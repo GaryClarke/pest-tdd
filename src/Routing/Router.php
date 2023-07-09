@@ -42,6 +42,8 @@ class Router
             case Dispatcher::FOUND:
                 $handler = $routeInfo[1];
 
+                dd($handler);
+
                 $response = $handler();
                 //$vars = $routeInfo[2];
                 // ... call $handler with $vars

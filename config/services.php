@@ -10,7 +10,7 @@ $routes = include __DIR__ . '/routes.php';
 # services
 $container->add(\App\Routing\Router::class);
 $container->extend(\App\Routing\Router::class)
-    ->addMethodCall('setRoutes', $routes);
+    ->addMethodCall('setRoutes', [$routes]);
 
 $container->add(\App\Http\Kernel::class)
     ->addArguments([\App\Routing\Router::class]);
