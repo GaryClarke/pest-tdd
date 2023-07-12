@@ -8,6 +8,9 @@ $container->delegate(new \League\Container\ReflectionContainer(true));
 $routes = include __DIR__ . '/routes.php';
 
 # services
+$container->add(\App\Routing\RouteHandlerResolver::class)
+    ->addArguments([$container]);
+
 $container->add(\App\Routing\Router::class)
     ->addArguments([\App\Routing\RouteHandlerResolver::class]);
 
