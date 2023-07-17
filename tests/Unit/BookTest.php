@@ -1,5 +1,7 @@
 <?php
 
+use App\Entity\Book;
+
 test('a book can be created using a named constructor', function() {
 
     //$author = Author::create(
