@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-class Book
+use JetBrains\PhpStorm\Internal\TentativeType;
+
+class Book implements \JsonSerializable
 {
     public function __construct(
         private ?int $id,
@@ -21,5 +23,12 @@ class Book
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function jsonSerialize(): array
+    {
+        $vars = get_object_vars($this);
+
+        return $vars;
     }
 }
