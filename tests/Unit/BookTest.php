@@ -26,6 +26,14 @@ test('a book can be created using a named constructor', function() {
         ->and($book->yearPublished)->toBe(1999)
         ->and($book->author)->toBe($author)
         ->and($book->author->name)->toBe('John Doe')
-
-    ;
+        ->and(json_encode($book))->toMatchJson([
+            'id' => 123, // private props won't be serialized
+            'title' => 'Test book',
+            'yearPublished' => 1999,
+            'author' => [
+                'id' => 321,
+                'name' => 'John Doe',
+                'bio' => 'This is a bio'
+            ]
+        ]);
 });
