@@ -20,5 +20,6 @@ it('returns the correct book data by ID', function() {
             'name' => 'A. N. Author',
             'bio' => 'This is an author'
         ]);
+
 })->group('integration');
 
