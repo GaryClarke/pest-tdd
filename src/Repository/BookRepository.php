@@ -11,7 +11,7 @@ class BookRepository
     public function findById(int $id): ?Book
     {
         // Instantiate a PDO instance
-        $dsn = '';
+        $dsn = 'sqlite:db/pest-tdd.sqlite';
         $pdo = new PDO($dsn);
         $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
