@@ -1,5 +1,7 @@
 <?php
 
+use App\Database\Connection;
+
 it('returns a valid PDO instance', function() {
 
     // ARRANGE

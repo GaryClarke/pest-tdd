@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Database\Connection;
 use App\Entity\Author;
 use App\Entity\Book;
 use PDO;
