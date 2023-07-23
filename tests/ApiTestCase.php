@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
 
 abstract class ApiTestCase extends BaseTestCase
 {
-    private Container $container;
+    protected Container $container;
 
     protected function setUp(): void
     {
