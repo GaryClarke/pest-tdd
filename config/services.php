@@ -3,9 +3,12 @@
 $container = new \League\Container\Container();
 
 $container->delegate(new \League\Container\ReflectionContainer(true));
+$dotenv = new \Symfony\Component\Dotenv\Dotenv();
+$dotenv->load(dirname(__DIR__) . '/.env');
 
 # parameters
-$dsn = 'sqlite:db/pest-tdd.sqlite';
+$dsn = $_ENV['DSN'];
+dd($dsn);
 $container->add('dsn', new \League\Container\Argument\Literal\StringArgument($dsn));
 $routes = include __DIR__ . '/routes.php';
 
