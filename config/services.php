@@ -8,7 +8,6 @@ $dotenv->load(dirname(__DIR__) . '/.env');
 
 # parameters
 $dsn = $_ENV['DSN'];
-dd($dsn);
 $container->add('dsn', new \League\Container\Argument\Literal\StringArgument($dsn));
 $routes = include __DIR__ . '/routes.php';
 
