@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Command\Migrate;
 use App\Http\Kernel;
 use App\Http\Request;
 use App\Http\Response;
