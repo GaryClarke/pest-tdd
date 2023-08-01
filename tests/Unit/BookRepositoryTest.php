@@ -4,6 +4,10 @@ use App\Repository\BookRepository;
 
 uses(\Tests\ApiTestCase::class);
 
+beforeEach(function() {
+    $this->migrateTestDatabase();
+});
+
 it('returns the correct book data by ID', function() {
 
     // ARRANGE

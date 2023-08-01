@@ -54,4 +54,11 @@ abstract class ApiTestCase extends BaseTestCase
         // return the $response
         return $response;
     }
+
+    public function migrateTestDatabase(): void
+    {
+        $migrate = new Migrate();
+
+        $migrate->execute();
+    }
 }
