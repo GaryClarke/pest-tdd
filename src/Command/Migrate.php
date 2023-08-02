@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Database\Connection;
+use App\Database\MigrationInterface;
 use PDOException;
 
 class Migrate implements CommandInterface
@@ -28,12 +29,27 @@ class Migrate implements CommandInterface
             $files = scandir($this->migrationsFolder);
 
             // Loop through files in migrations folder
+            foreach ($files as $file) {
+
+                if ($file === '.' || $file === '..') {
+                    continue;
+                }
 
                 // Include the file
+                $migration = include $this->migrationsFolder . '/' . $file;
 
                 // Check that it is a Migration
+                if (!$migration instanceof MigrationInterface) {
+                    continue;
+                }
 
                 // Call up method
+                $migration->up($pdo);
+
+            }
+
+            // Commit transaction
+            $pdo->commit();
 
         // Catch an exception and roll back
         } catch (PDOException $exception) {

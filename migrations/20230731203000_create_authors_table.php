@@ -9,7 +9,7 @@ return new class implements MigrationInterface
         $sql = "CREATE TABLE IF NOT EXISTS authors (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
-            biography TEXT,
+            bio TEXT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );";
 
