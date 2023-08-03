@@ -1,5 +1,7 @@
 <?php
 
+use App\Entity\Author;
+use App\Entity\Book;
 use App\Repository\BookRepository;
 
 uses(\Tests\ApiTestCase::class);
@@ -11,12 +13,39 @@ beforeEach(function() {
 it('returns the correct book data by ID', function() {
 
     // ARRANGE
-    $bookId = 999;
     $connection = $this->container->get(\App\Database\Connection::class);
+
+    // Create an $author object
+    $author = Author::create(
+        id: null,
+        name: 'A. N. Author',
+        bio: 'This is an author'
+    );
+
+    // Instantiate an AuthorMapper
+    $authorMapper = new AuthorMapper($connection);
+
+    // Persist the $author
+    $authorMapper->save($author);
+
+    // Create a $book object
+    $book = Book::create(
+        id: null,
+        title: 'A Test Book',
+        yearPublished: 1999,
+        author: $author
+    );
+
+    // Instantiate a BookMapper
+    $bookMapper = new BookMapper($connection);
+
+    // Persist the $book
+    $bookMapper->save($book);
+
     $bookRepository = new BookRepository($connection);
 
     // ACT
-    $foundBook = $bookRepository->findById($bookId);
+    $foundBook = $bookRepository->findById($book->getId());
 
     // ASSERT
     expect($foundBook)->toMatchObject([
