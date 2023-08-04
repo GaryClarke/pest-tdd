@@ -18,6 +18,7 @@ abstract class ApiTestCase extends BaseTestCase
     protected function setUp(): void
     {
         $this->container = include dirname(__DIR__) . '/config/services.php';
+        $this->connection = $this->container->get(Connection::class);
     }
 
     public function json(
