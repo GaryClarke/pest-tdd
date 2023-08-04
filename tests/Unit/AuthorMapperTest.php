@@ -1,8 +1,13 @@
 <?php
 
 use App\Entity\Author;
+use App\Repository\AuthorMapper;
 
 uses(\Tests\ApiTestCase::class);
+
+beforeEach(function() {
+   $this->migrateTestDatabase();
+});
 
 it('saves an Author to the database', function() {
 
