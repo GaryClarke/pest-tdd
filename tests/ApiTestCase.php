@@ -4,6 +4,7 @@ namespace Tests;
 
 use App\Command\Migrate;
 use App\Database\Connection;
+use App\Database\Database;
 use App\Http\Kernel;
 use App\Http\Request;
 use App\Http\Response;

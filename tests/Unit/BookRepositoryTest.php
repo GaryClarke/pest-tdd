@@ -2,6 +2,7 @@
 
 use App\Entity\Author;
 use App\Entity\Book;
+use App\Repository\AuthorMapper;
 use App\Repository\BookRepository;
 
 uses(\Tests\ApiTestCase::class);
