@@ -22,8 +22,8 @@ class Database
 
             $statement = $this->connection->getPdo()->prepare($sql);
 
-            foreach($criteria as $column => &$value) {
-                $statement->bindParam(":{$column}", $value);
+            foreach($criteria as $column => $value) {
+                $statement->bindValue(":{$column}", $value);
             }
 
             $statement->execute();
