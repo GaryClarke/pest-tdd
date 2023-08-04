@@ -67,4 +67,16 @@ abstract class ApiTestCase extends BaseTestCase
 
         $migrate->execute();
     }
+
+    public function assertDatabaseHas(string $tablename, array $criteria): void
+    {
+        // Instantiate a DB object which can be used to query any table
+        $db = new Database($this->connection);
+
+        // Fetch records from $tablename which match the supplied $criteria
+        $result = $db->fetchRecords($tablename, $criteria);
+
+        // Assert that at least one record was found
+        $this->assertGreaterThan(0, count($result));
+    }
 }
