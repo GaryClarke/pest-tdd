@@ -1,5 +1,9 @@
 <?php
 
+beforeEach(function() {
+    $this->migrateTestDatabase();
+});
+
 it('retrieves the correct book 1 data from the books API', function() {
 
     // ARRANGE
