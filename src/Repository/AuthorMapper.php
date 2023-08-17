@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Database\Connection;
@@ -28,7 +30,7 @@ class AuthorMapper
         $stmt->execute();
 
         // Set the author id
-        $lastInsertId = $this->connection->getPdo()->lastInsertId();
+        $lastInsertId = (int) $this->connection->getPdo()->lastInsertId();
 
         $author->setId($lastInsertId);
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Database\Connection;
@@ -25,7 +27,7 @@ class BookMapper
 
         $stmt->execute();
 
-        $id = $this->connection->getPdo()->lastInsertId();
+        $id = (int) $this->connection->getPdo()->lastInsertId();
 
         $book->setId($id);
     }
