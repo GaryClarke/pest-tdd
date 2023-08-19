@@ -46,9 +46,6 @@ abstract class ApiTestCase extends BaseTestCase
             content: $content
         );
 
-        //$router = new Router();
-        //$router->setRoutes();
-
         // Create / resolve the Kernel
         $kernel = $this->container->get(Kernel::class);
 
