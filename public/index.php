@@ -1,11 +1,11 @@
 <?php
 
-// Create a $request using a static named constructor
 use App\Http\Kernel;
 use App\Http\Request;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
+// Create a $request using a static named constructor
 $request = Request::createFromGlobals();
 
 // Create a Http/Kernel (the heart of the application)

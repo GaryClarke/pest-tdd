@@ -9,11 +9,22 @@ class Request
     public function __construct(
         private array $queryParams, // $_GET
         private array $serverVars = [], // $_SERVER
-        private array $postParams = [],
-        private array $cookies = [],
-        private array $files = []
+        private array $postParams = [], // $_POST
+        private array $cookies = [], // $_COOKIE
+        private array $files = [] // $_FILES
     )
     {
+    }
+
+    public static function createFromGlobals(): self
+    {
+        return new self(
+            $_GET,
+            $_SERVER,
+            $_POST,
+            $_COOKIE,
+            $_FILES
+        );
     }
 
     public static function create(
