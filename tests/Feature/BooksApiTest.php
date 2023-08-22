@@ -58,6 +58,12 @@ it('retrieves the correct book data from the books API', function(
                 'bio' => $authorData['bio']
             ]
         ]);
+
+    expect($response)->toBeInstanceOf(JsonResponse::class)
+        ->and($response->getHeaders())->toMatchArray([
+            'Content-Type' =>  'application/json'
+        ]);
+
 })->with([
     'book 1' => [
         'uri' => '/books/1',
