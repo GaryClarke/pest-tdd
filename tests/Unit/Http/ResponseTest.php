@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\JsonResponse;
 use App\Http\Response;
 
 test('a Response object can be created', function() {
