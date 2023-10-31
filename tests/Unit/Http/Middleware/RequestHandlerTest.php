@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Middleware\RequestHandler;
 use App\Http\Response;
-use Unit\Http\Middleware\SuccessMiddleware;
+use Tests\Unit\Http\Middleware\SuccessMiddleware;
 
 beforeEach(function() {
     $this->container = include dirname(__DIR__, 4) . '/config/services.php';

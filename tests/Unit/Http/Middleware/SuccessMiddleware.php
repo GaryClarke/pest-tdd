@@ -1,6 +1,6 @@
 <?php
 
-namespace Unit\Http\Middleware;
+namespace Tests\Unit\Http\Middleware;
 
 use App\Http\Middleware\MiddlewareInterface;
 use App\Http\Middleware\RequestHandlerInterface;
