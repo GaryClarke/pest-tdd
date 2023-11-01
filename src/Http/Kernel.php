@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace App\Http;
 
+use App\Http\Middleware\RequestHandlerInterface;
 use App\Routing\Router;
 
 class Kernel
 {
     public function __construct(
-        private Router $router
+        private RequestHandlerInterface $requestHandler
     )
     {
     }
 
     public function handle(Request $request): Response
     {
-        return $this->router->dispatch($request);
+        return $this->requestHandler->handle($request);
     }
 }

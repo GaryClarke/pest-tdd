@@ -10,7 +10,9 @@ use Psr\Container\ContainerInterface;
 
 class RequestHandler implements RequestHandlerInterface
 {
-    private array $middleware = [];
+    private array $middleware = [
+        RouterDispatch::class
+    ];
 
     public function __construct(
         private ContainerInterface $container

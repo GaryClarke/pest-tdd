@@ -26,11 +26,18 @@ $container->add(\App\Routing\Router::class)
 $container->extend(\App\Routing\Router::class)
     ->addMethodCall('setRoutes', [$routes]);
 
+$container->add(
+    \App\Http\Middleware\RequestHandlerInterface::class,
+    \App\Http\Middleware\RequestHandler::class
+)->addArgument($container);
+
 $container->add(\App\Http\Kernel::class)
-    ->addArguments([\App\Routing\Router::class]);
+    ->addArguments([\App\Http\Middleware\RequestHandlerInterface::class]);
 
 $container->addShared(\App\Database\Connection::class)
     ->addArguments(['dsn']);
+
+
 
 return $container;
 
