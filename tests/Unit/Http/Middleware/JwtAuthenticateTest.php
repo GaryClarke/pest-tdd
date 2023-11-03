@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\JwtAuthenticate;
 use App\Http\Middleware\RequestHandlerInterface;
 
 test('JWT authentication produces the correct response', function() {

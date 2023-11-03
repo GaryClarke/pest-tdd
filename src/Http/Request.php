@@ -61,4 +61,9 @@ class Request
     {
         return $this->serverVars['REQUEST_METHOD'];
     }
+
+    public function getServerVariable(string $serverVariable): ?string
+    {
+        return $this->serverVars[$serverVariable] ?? null;
+    }
 }
