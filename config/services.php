@@ -39,7 +39,8 @@ $container->add(\App\Http\Kernel::class)
 $container->addShared(\App\Database\Connection::class)
     ->addArguments(['dsn']);
 
-
+$container->add(\App\Http\Middleware\JwtAuthenticate::class)
+    ->addArgument('jwtSecretKey');
 
 return $container;
 
