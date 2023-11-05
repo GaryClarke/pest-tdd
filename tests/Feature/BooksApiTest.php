@@ -18,11 +18,14 @@ it('retrieves the correct book data from the books API', function(
     // ARRANGE
     $key = $this->container->get('jwtSecretKey');
 
+    $issuedAt = time();
+
     $payload = [
         'iss' => 'https://books-api.org',
         'aud' => 'https://books-api.com',
-        'iat' => 1698610685,
-        'nbf' => 1698610685,
+        'iat' => $issuedAt,
+        'nbf' => $issuedAt,
+        'exp' => $issuedAt + (60 * 60),
         'data' => [
             'username' => 'garyclarke',
             'plan' => 'premium'
